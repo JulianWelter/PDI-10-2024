@@ -1,0 +1,17 @@
+{
+  "name": "elysia",
+  "version": "1.0.50",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "bun prisma generate && bun run --watch src/index.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.20.0",
+    "elysia": "latest",
+    "prisma": "^5.20.0"
+  },
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "module": "src/index.js"
+}
