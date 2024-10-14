@@ -5,6 +5,8 @@ To get started with this template, simply paste this command into your terminal:
 ```bash
 bun create elysia ./elysia-example
 ```
+## DB
+docker-compose up -d
 
 ## Development
 To start the development server run:
