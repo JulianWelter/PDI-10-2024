@@ -1,0 +1,139 @@
+{
+	"info": {
+		"_postman_id": "21fd2df2-464f-47ce-abdf-0e5ddd888c23",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13419165"
+	},
+	"item": [
+		{
+			"name": "Find all (/user)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/v1/user",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find by id (/user/{id})",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/v1/user/573bcce3-e2af-48c0-853f-f40e3493f48a",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"user",
+						"573bcce3-e2af-48c0-853f-f40e3493f48a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post (/user)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"João\",\r\n    \"last_name\": \"Silva\",\r\n    \"cpf\": \"123.456.789-02\",\r\n    \"email\": \"joao.silva@example3.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/v1/user/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patch (/user/{id})",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"João66\",\r\n    \"last_name\": \"Ferreira2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/v1/user/573bcce3-e2af-48c0-853f-f40e3493f48a",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"user",
+						"573bcce3-e2af-48c0-853f-f40e3493f48a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete (/user/{id})",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/v1/user/084178dc-aaf4-4719-86dc-27093aee6a77",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"user",
+						"084178dc-aaf4-4719-86dc-27093aee6a77"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

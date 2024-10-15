@@ -1,4 +1,3 @@
-import { NotFoundError } from 'elysia';
 import db from '../db';
 
 export async function getUsers() {
@@ -16,7 +15,7 @@ export async function getUser(id: string) {
     });
  
     if (!user) {
-      return 'User not found.'
+      return 'Usuario não encontrado.'
     }
  
     return user;
@@ -29,6 +28,15 @@ export async function createUser(options: { name: string; last_name: string; cpf
   try {
     console.log(options)
     const { name, last_name, cpf, email, } = options;
+
+    if(!validateCPF(cpf)){
+      return "CPF inválido"
+    }
+
+    console.log(!validateEmail(email))
+    if(!validateEmail(email)){
+      return "Email inválido"
+    }
  
     return await db.users.create({ data: { name, last_name, cpf, email,} });
   } catch (e: unknown) {
@@ -68,4 +76,41 @@ export async function deleteUser( id: string ) {
   } catch (e: unknown) {
     console.error(`Error deleting user: ${e}`);
   }
+}
+
+function validateCPF(cpf: string): boolean {
+  cpf = cpf.replace(/\D/g, '');
+
+  if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) {
+      return false;
+  }
+
+  let sum = 0;
+  let remainder: number;
+
+  for (let i = 1; i <= 9; i++) {
+      sum += parseInt(cpf.charAt(i - 1)) * (11 - i);
+  }
+  remainder = (sum * 10) % 11;
+  if (remainder === 10 || remainder === 11) {
+      remainder = 0;
+  }
+  if (remainder !== parseInt(cpf.charAt(9))) {
+      return false;
+  }
+
+  sum = 0;
+  for (let i = 1; i <= 10; i++) {
+      sum += parseInt(cpf.charAt(i - 1)) * (12 - i);
+  }
+  remainder = (sum * 10) % 11;
+  if (remainder === 10 || remainder === 11) {
+      remainder = 0;
+  }
+  return remainder === parseInt(cpf.charAt(10));
+}
+
+function validateEmail(email: string): boolean {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
 }
